@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials"/>
+  </head>
+  <body>
+    <p>
+      Hello World!
+    </p>
+    <button type="button" id="internet-button" onclick="checkInternet();">
+      Connected to internet?
+    </button>
+    <label id="internet-label"></label><br>
+    <button type="button" id="host-button" onclick="checkHost();">
+      Connected to original host server?
+    </button>
+    <label id="host-label"></label>
+  </body>
+  <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    }
+  </script>
+  <script src="internet.js" type="application/javascript"></script>
+</html>

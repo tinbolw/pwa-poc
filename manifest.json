@@ -1,0 +1,22 @@
+{
+  "lang": "en-us",
+  "name": "untitledApp",
+  "short_name": "test",
+  "description": "test",
+  "icons": [
+    {
+      "src": "/icons/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/icons/192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "display_override": ["minimal-ui"],
+  "prefer_related_applications": false
+}
