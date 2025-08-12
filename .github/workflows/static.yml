@@ -32,9 +32,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Update index.html base href
-        run: sed -i 's_base href=""_base href="pwa-poc/"_g' index.html
+        run: sed -i 's_base href="/"_base href="pwa-poc/"_g' index.html
       - name: Update /html base hrefs
-        run: find ./html -maxdepth 1 -type f -exec sed -i 's_base href=""_base href="pwa-poc/"_g' {} \;
+        run: find ./html -maxdepth 1 -type f -exec sed -i 's_base href="/"_base href="pwa-poc/"_g' {} \;
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
