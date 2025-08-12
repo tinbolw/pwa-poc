@@ -11,17 +11,17 @@ self.addEventListener('install', event => {
     cache.addAll([
       '/',
       'index.html',
-      '/html/apitesting.html',
-      '/html/browse.html',
-      '/html/history.html',
-      '/html/library.html',
-      '/html/settings.html',
-      '/html/updates.html',
+      'html/apitesting.html',
+      'html/browse.html',
+      'html/history.html',
+      'html/library.html',
+      'html/settings.html',
+      'html/updates.html',
       'style.css',
-      '/css/desktop.css',
-      '/css/mobile.css',
-      '/js/internet.js',
-      '/js/randomimage.js'
+      'css/desktop.css',
+      'css/mobile.css',
+      'js/internet.js',
+      'js/randomimage.js'
     ]); // add needed files to run here
   })());
 });
