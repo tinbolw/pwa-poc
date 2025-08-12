@@ -39,7 +39,7 @@ jobs:
       - name: Update /html base hrefs
         run: find ./html -maxdepth 1 -type f -exec sed -i 's_base href="/"_base href="/pwa-poc/"_g' {} \;
       - name: Update manifest.json start_url
-        run: "sed -i 's_\"start_url\": \"/\"_\"start_url\": \"/pwa-poc/\"_g' manifest.json"
+        run: sed -i 's_"/"_"/pwa-poc/"_g' manifest.json
       - name: Update manifest.json 512x512 icon path
         run: sed -i 's_/icons/512.png_/pwa-poc/icons/512.png_g' manifest.json
       - name: Update manifest.json 192x192 icon path
