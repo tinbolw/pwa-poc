@@ -2,13 +2,14 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <p>
       API Testing
     </p>
-    <a href="/index.html">Back</a><br>
+    <a href="index.html">Back</a><br>
     <button type="button" onclick="getRandomImage();">Random Image</button><br>
     <img id="random-image" src="">
   </body>
@@ -18,5 +19,5 @@
       navigator.serviceWorker.register('/sw.js', { scope: '/' });
     }
   </script> -->
-  <script src="/js/randomimage.js" type="application/javascript"></script>
+  <script src="js/randomimage.js" type="application/javascript"></script>
 </html>

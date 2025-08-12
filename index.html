@@ -2,9 +2,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <link rel="manifest" href="/manifest.json" crossorigin="use-credentials"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials"/>
   </head>
   <body>
     <p>
@@ -18,8 +18,8 @@
       Connected to original host server?
     </button>
     <label id="host-label"></label><br>
-    <a href="/html/apitesting.html">API Testing</a><br>
-    <a href="/html/library.html">Library</a>
+    <a href="html/apitesting.html">API Testing</a><br>
+    <a href="html/library.html">Library</a>
     <!-- add some sort of caching progress if possible -->
   </body>
   <!-- dont think this needs to be on every page, but check -->
@@ -28,5 +28,5 @@
       navigator.serviceWorker.register('/sw.js', { scope: '/' });
     }
   </script>
-  <script src="/js/internet.js" type="application/javascript"></script>
+  <script src="js/internet.js" type="application/javascript"></script>
 </html>

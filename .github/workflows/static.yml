@@ -31,10 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Update base href
-        run: sed -i 's_base href="/"_base href="/pwa-poc/"_g' index.html
-      - name: Verify edited index.html
-        run: cat index.html
+      - name: Update index.html base href
+        run: sed -i 's_base href=""_base href="pwa-poc/"_g' index.html
+      - name: Update /html base hrefs
+        run: for file in /html/* do sed -i 's_base href=""_base href="pwa-poc/"_g' "$file" done
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
