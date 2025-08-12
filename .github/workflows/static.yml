@@ -37,11 +37,11 @@ jobs:
       - name: Update /html base hrefs
         run: find ./html -maxdepth 1 -type f -exec sed -i 's_base href="/"_base href="/pwa-poc/"_g' {} \;
       - name: Update manifest.json 512x512 icon path
-        run: sed -i 's_/icons/512.png_/pwa-poc/icons/512.png_g' index.html
+        run: sed -i 's_/icons/512.png_/pwa-poc/icons/512.png_g' manifest.json
       - name: Update manifest.json 192x192 icon path
-        run: sed -i 's_/icons/192.png_/pwa-poc/icons/192.png_g' index.html
+        run: sed -i 's_/icons/192.png_/pwa-poc/icons/192.png_g' manifest.json
       - name: Update service worker cache paths
-        run: sed -i "s_'/'_'/pwa-poc/'_g" index.html
+        run: sed -i "s_'/'_'/pwa-poc/'_g" sw.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
