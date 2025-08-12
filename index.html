@@ -1,7 +1,9 @@
+<!-- at some point make this adhere to best practices and standards -->
 <!doctype html>
 <html lang="en">
   <head>
     <link rel="manifest" href="/manifest.json" crossorigin="use-credentials"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <p>
@@ -14,12 +16,16 @@
     <button type="button" id="host-button" onclick="checkHost();">
       Connected to original host server?
     </button>
-    <label id="host-label"></label>
+    <label id="host-label"></label><br>
+    <a href="/html/apitesting.html">API Testing</a><br>
+    <a href="/html/library.html">Library</a>
+    <!-- add some sort of caching progress if possible -->
   </body>
+  <!-- dont think this needs to be on every page, but check -->
   <script>
     if('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js', { scope: '/' });
     }
   </script>
-  <script src="internet.js" type="application/javascript"></script>
+  <script src="/js/internet.js" type="application/javascript"></script>
 </html>

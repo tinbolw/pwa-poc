@@ -1,0 +1,29 @@
+<!-- at some point make this adhere to best practices and standards -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <!-- https://www.w3schools.com/css/css_rwd_viewport.asp -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <p>
+      Updates
+    </p>
+    <a href="/index.html">Back</a><br>
+    <div class="navbar">
+      <a href="/html/library.html">Library</a>
+      <a class="active">Updates</a>
+      <a href="/html/history.html">History</a>
+      <a href="/html/browse.html">Browse</a>
+      <a href="/html/settings.html">Settings</a>
+     </div>
+  </body>
+  <!-- do i need the service worker on all pages? -->
+  <!-- <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    }
+  </script> -->
+</html>

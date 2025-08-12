@@ -1,0 +1,1 @@
+npx http-server | ngrok http 8080

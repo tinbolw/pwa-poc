@@ -1,0 +1,33 @@
+<!-- at some point make this adhere to best practices and standards -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/css/mobile.css">
+    <!-- https://www.w3schools.com/css/css_rwd_viewport.asp -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <!-- disable body margins and use margins in div instead? -->
+  <body>
+    <div class="container">
+      <p>
+      Library
+      </p>
+      <a href="/index.html">Back</a>
+    </div>
+    <!-- https://www.w3schools.com/howto/howto_css_bottom_nav.asp -->
+     <div class="navbar">
+      <a class="active">Library</a>
+      <a href="/html/updates.html">Updates</a>
+      <a href="/html/history.html">History</a>
+      <a href="/html/browse.html">Browse</a>
+      <a href="/html/settings.html">Settings</a>
+     </div>
+  </body>
+  <!-- do i need the service worker on all pages? -->
+  <!-- <script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' });
+    }
+  </script> -->
+</html>

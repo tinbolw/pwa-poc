@@ -1,0 +1,11 @@
+/* fonts, colors, etc here */
+@font-face{
+  font-family: 'Roboto';
+  /* could save resources optimizing local(), then url() */
+  src: url('/ttf/Roboto.ttf') format('ttf');
+  font-weight: normal;
+}
+
+body {
+  font-family: 'Roboto';
+}
