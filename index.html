@@ -24,16 +24,16 @@
   <!-- dont think this needs to be on every page, but check -->
   <script>
     if('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js', { scope: '/' });
-    }
-  </script>
-  <script>
-    if (navigator.storage && navigator.storage.persist) {
-      navigator.storage.persist().then((persistent) => {
-        if (persistent) {
-          console.log("Storage will not be cleared except by explicit user action");
-        } else {
-          console.log("Storage may be cleared by the UA under storage pressure.");
+      navigator.serviceWorker.register('sw.js', { scope: '/' }).then(() => {
+        // https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist
+        if (navigator.storage && navigator.storage.persist) {
+          navigator.storage.persist().then((persistent) => {
+            if (persistent) {
+              console.log("Storage will not be cleared except by explicit user action");
+            } else {
+              console.log("Storage may be cleared by the UA under storage pressure.");
+            }
+          });
         }
       });
     }
