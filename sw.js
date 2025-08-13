@@ -9,20 +9,19 @@ self.addEventListener('install', event => {
     // TODO make dynamically add files in folders
     // / seems to be required for recaching redirects to home page
     cache.addAll([
-      '/pwa-poc/',
-      '/pwa-poc/index.html'
-      // '/index.html',
-      // '/html/apitesting.html',
-      // '/html/browse.html',
-      // '/html/history.html',
-      // '/html/library.html',
-      // '/html/settings.html',
-      // '/html/updates.html',
-      // '/style.css',
-      // '/css/desktop.css',
-      // '/css/mobile.css',
-      // '/js/internet.js',
-      // '/js/randomimage.js',
+      '/',
+      '/index.html',
+      '/html/apitesting.html',
+      '/html/browse.html',
+      '/html/history.html',
+      '/html/library.html',
+      '/html/settings.html',
+      '/html/updates.html',
+      '/style.css',
+      '/css/desktop.css',
+      '/css/mobile.css',
+      '/js/internet.js',
+      '/js/randomimage.js',
     ]).then(() => {
       console.log("cache success");
     }).catch(() => {

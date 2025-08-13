@@ -46,7 +46,7 @@ jobs:
         run: sed -i 's_/icons/192.png_/pwa-poc/icons/192.png_g' manifest.json
         # check if this is correct
       - name: Update service worker cache paths
-        run: sed -i "s_'/'_'/pwa-poc/'_g" sw.js
+        run: sed -i "s_'/_'/pwa-poc/_g" sw.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
