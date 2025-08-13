@@ -34,7 +34,25 @@
           document.getElementById("sw-status").innerText = "Installing";
           return registration.installing;
         } else if (registration.waiting) {
-          document.getElementById("sw-status").innerText = "Waiting"; // installed
+          document.getElementById("sw-status").innerText = "Installed"; // Waiting
+          // https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist
+          if (navigator.storage && navigator.storage.persist) {
+            navigator.storage.persist().then((persistent) => {
+              if (persistent) {
+                console.log("Storage will not be cleared except by explicit user action");
+                document.getElementById("storage-status").innerText = "Persistent";
+              } else {
+                console.log("Storage may be cleared by the UA under storage pressure.");
+                document.getElementById("storage-status").innerText = "Non-persistent";
+              }
+            });
+          } // add else conditional
+          if (!navigator.serviceWorker.controller) location.reload(); // trigger cache reload
+          navigator.serviceWorker.controller.postMessage("cacheCheck");
+          navigator.serviceWorker.addEventListener('message', function(event) {
+            console.log(event.data);
+            if (event.data === "cacheComplete") document.getElementById("cache-status").innerText = "Complete";
+          });
           return registration.waiting;
         } else if (registration.active) {
           document.getElementById("sw-status").innerText = "Active";
