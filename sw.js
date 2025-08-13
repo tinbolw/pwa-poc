@@ -23,8 +23,9 @@ self.addEventListener('install', event => {
       'js/internet.js',
       'js/randomimage.js',
       '/pwa-poc/html/apitesting.html',
-      '/pwa-poc/html/browse.html',
-      '/pwa-poc/html/history.html',
+      '/pwa-poc/html/library.html',
+      '/html/apitesting.html',
+      '/html/library.html',
     ]); // add needed files to run here
   })());
 });
