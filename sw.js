@@ -11,21 +11,21 @@ self.addEventListener('install', event => {
     cache.addAll([
       '/',
       '/index.html',
-      '/html/apitesting.html',
-      '/html/browse.html',
-      '/html/history.html',
+      // '/html/apitesting.html',
+      // '/html/browse.html',
+      // '/html/history.html',
       '/html/library.html',
-      '/html/settings.html',
-      '/html/updates.html',
-      '/style.css',
-      '/css/desktop.css',
-      '/css/mobile.css',
-      '/js/internet.js',
-      '/js/randomimage.js',
-    ]).then((res) => {
-      console.log(res); // undefined on success
-    }).catch((err) => {
-      console.log(err);
+      // '/html/settings.html',
+      // '/html/updates.html',
+      // '/style.css',
+      // '/css/desktop.css',
+      // '/css/mobile.css',
+      // '/js/internet.js',
+      // '/js/randomimage.js',
+    ]).then(() => {
+      console.log("cache success");
+    }).catch(() => {
+      console.log("cache failed");
     }); // add needed files to run here
   })());
 });
