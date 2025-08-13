@@ -9,7 +9,7 @@ self.addEventListener('install', event => {
     // TODO make dynamically add files in folders
     // / seems to be required for recaching redirects to home page
     cache.addAll([
-      '/',
+      '/pwa-poc/',
       '/pwa-poc/index.html'
       // '/index.html',
       // '/html/apitesting.html',
