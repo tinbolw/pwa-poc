@@ -18,24 +18,59 @@
     </button>
     <label id="host-label"></label><br>
     <a href="html/apitesting.html">API Testing</a><br>
-    <a href="html/library.html">Library</a>
-    <!-- add some sort of caching progress if possible -->
+    <a href="html/library.html">Library</a><br>
+    <label>Service Worker Status: </label>
+    <label id="sw-status"></label><br>
+    <label>Cache Status: </label>
+    <label id="cache-status"></label><br>
+    <label>Storage Status: </label>
+    <label id="storage-status"></label>
   </body>
   <!-- dont think this needs to be on every page, but check -->
   <script>
     if('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js', { scope: '/' }).then(() => {
-        // https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist
-        if (navigator.storage && navigator.storage.persist) {
-          navigator.storage.persist().then((persistent) => {
-            if (persistent) {
-              console.log("Storage will not be cleared except by explicit user action");
-            } else {
-              console.log("Storage may be cleared by the UA under storage pressure.");
-            }
+      function logState(registration) {
+        if (registration.installing) {
+          document.getElementById("sw-status").innerText = "Installing";
+          return registration.installing;
+        } else if (registration.waiting) {
+          document.getElementById("sw-status").innerText = "Waiting"; // installed
+          return registration.waiting;
+        } else if (registration.active) {
+          document.getElementById("sw-status").innerText = "Active";
+          // https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist
+          if (navigator.storage && navigator.storage.persist) {
+            navigator.storage.persist().then((persistent) => {
+              if (persistent) {
+                console.log("Storage will not be cleared except by explicit user action");
+                document.getElementById("storage-status").innerText = "Persistent";
+              } else {
+                console.log("Storage may be cleared by the UA under storage pressure.");
+                document.getElementById("storage-status").innerText = "Non-persistent";
+              }
+            });
+          } // add else conditional
+          if (!navigator.serviceWorker.controller) location.reload(); // trigger cache reload
+          navigator.serviceWorker.controller.postMessage("cacheCheck");
+          navigator.serviceWorker.addEventListener('message', function(event) {
+            console.log(event.data);
+            if (event.data === "cacheComplete") document.getElementById("cache-status").innerText = "Complete";
           });
-        }
+          return registration.active;
+        } 
+      }
+
+      navigator.serviceWorker.register('sw.js', { scope: '/' }).then((registration) => {
+        let serviceWorker = logState(registration);
+        serviceWorker.addEventListener("statechange", (event) => {
+          serviceWorker = logState(registration); // todo kill event listener and exit loop when installed
+        });
+      }).catch((error) => {
+        console.error(error);
+        document.getElementById("sw-status").innerText = "Error during installation";
       });
+    } else {
+      document.getElementById("sw-status").innerText = "Unsupported";
     }
   </script>
   <script src="js/internet.js" type="application/javascript"></script>

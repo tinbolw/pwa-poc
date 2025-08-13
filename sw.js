@@ -1,14 +1,7 @@
 // https://learn.microsoft.com/en-us/microsoft-edge/progressive-web-apps/how-to/#step-4---continue-building-the-user-interface-of-your-app
 
 const CACHE_NAME = `untitledApp`;
-
-// Use the install event to pre-cache all initial resources.
-self.addEventListener('install', event => {
-  event.waitUntil((async () => {
-    const cache = await caches.open(CACHE_NAME);
-    // TODO make dynamically add files in folders
-    // / seems to be required for recaching redirects to home page
-    cache.addAll([
+const CACHED_PAGES = [
       '/',
       '/index.html',
       '/html/apitesting.html',
@@ -22,12 +15,32 @@ self.addEventListener('install', event => {
       '/css/mobile.css',
       '/js/internet.js',
       '/js/randomimage.js',
-    ]).then(() => {
+    ];
+
+// Use the install event to pre-cache all initial resources.
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    // use a different event listener to access different cache?
+    const cache = await caches.open(CACHE_NAME);
+    // TODO make dynamically add files in folders
+    // / seems to be required for recaching redirects to home page
+    cache.addAll(CACHED_PAGES).then(() => {
       console.log("cache success");
+      test = true;
     }).catch(() => {
       console.log("cache failed");
     }); // add needed files to run here
   })());
+});
+
+self.addEventListener("message", async function(event) {
+// event.source.postMessage("Responding to " + event.data);
+  const cache = await caches.open(CACHE_NAME);
+  if ((await cache.keys()).length === CACHED_PAGES.length) {
+    self.clients.matchAll().then(all => all.forEach(client => {
+      client.postMessage("cacheComplete");
+    }));
+  }
 });
 
 // not sure if i want to have this part, rather just disable if no internet
