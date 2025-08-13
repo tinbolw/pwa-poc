@@ -21,7 +21,10 @@ self.addEventListener('install', event => {
       'css/desktop.css',
       'css/mobile.css',
       'js/internet.js',
-      'js/randomimage.js'
+      'js/randomimage.js',
+      '/pwa-poc/html/apitesting.html',
+      '/pwa-poc/html/browse.html',
+      '/pwa-poc/html/history.html',
     ]); // add needed files to run here
   })());
 });
