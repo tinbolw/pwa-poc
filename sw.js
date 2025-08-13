@@ -10,23 +10,23 @@ self.addEventListener('install', event => {
     // / seems to be required for recaching redirects to home page
     cache.addAll([
       '/',
-      'index.html',
-      'html/apitesting.html',
-      'html/browse.html',
-      'html/history.html',
-      'html/library.html',
-      'html/settings.html',
-      'html/updates.html',
-      'style.css',
-      'css/desktop.css',
-      'css/mobile.css',
-      'js/internet.js',
-      'js/randomimage.js',
-      '/pwa-poc/html/apitesting.html',
-      '/pwa-poc/html/library.html',
+      '/index.html',
       '/html/apitesting.html',
+      '/html/browse.html',
+      '/html/history.html',
       '/html/library.html',
-    ]); // add needed files to run here
+      '/html/settings.html',
+      '/html/updates.html',
+      '/style.css',
+      '/css/desktop.css',
+      '/css/mobile.css',
+      '/js/internet.js',
+      '/js/randomimage.js',
+    ]).then((res) => {
+      console.log(res); // undefined on success
+    }).catch((err) => {
+      console.log(err);
+    }); // add needed files to run here
   })());
 });
 
