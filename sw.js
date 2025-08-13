@@ -10,8 +10,7 @@ self.addEventListener('install', event => {
     // / seems to be required for recaching redirects to home page
     cache.addAll([
       '/',
-      '/index.html',
-      // '/pwa-poc/'
+      '/pwa-poc/index.html'
       // '/index.html',
       // '/html/apitesting.html',
       // '/html/browse.html',
